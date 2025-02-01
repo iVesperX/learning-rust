@@ -27,14 +27,26 @@ fn main() {
     // todo practice testing borrow violations
 }
 
-fn reverse_string(s: &String) -> String {
-    s.chars()
+fn reverse_string(original_string: &String) -> String {
+    original_string.chars()
         .rev()
         .collect::<String>()
+    /*
+    let mut new_string = String::new();
+
+    for index in (0..original_string.len()).rev() {
+        let character = original_string.chars().nth(index).unwrap();
+        new_string.push_str(&String::from(character));
+    }
+
+    new_string*/
 }
 
 fn count_occurrences(vector: &[i32], number: &i32) -> usize {
-    vector.iter().filter(|&x| x == number).count()
+    vector.iter()
+        .filter(|&x| x == number)
+        .count()
+
     /*
     let mut count = 0;
 
@@ -48,7 +60,11 @@ fn count_occurrences(vector: &[i32], number: &i32) -> usize {
 }
 
 fn get_maximum_value(vector: &[i32]) -> Option<i32> {
-    vector.iter().copied().max()
+    vector
+        .iter()
+        .copied()
+        .max()
+
     /*
     if vector.is_empty() {
         return None
